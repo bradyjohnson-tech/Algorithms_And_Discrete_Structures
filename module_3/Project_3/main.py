@@ -1,6 +1,4 @@
-import utils
 import binaryTree
-import graph
 
 
 def read_vector_from_file(filename='numbers.txt'):
@@ -9,49 +7,45 @@ def read_vector_from_file(filename='numbers.txt'):
         a = [int(line.strip()) for line in file]
     return a
 
-d = {}
 
-# function to create adjacency matrix of tree
-def create_adjacency_matrix(root, matrix):
-    # if root is None, return
-    if root is None:
+dictionary = {}
+
+
+def adjacency_matrix(bt, graph):
+    if bt is None:
         return
 
-    # if left child exists
-    if root.left is not None:
-        # set weight of edge as absolute difference of data of root and left child
-        matrix[d[root.data]][d[root.left.data]] = abs(root.data - root.left.data)
-        # recursively call function for left child
-        create_adjacency_matrix(root.left, matrix)
+    if bt.left is not None:
+        graph[dictionary[bt.data]][dictionary[bt.left.data]] = abs(
+            bt.data - bt.left.data)
+        adjacency_matrix(bt.left, graph)
 
-    # if right child exists
-    if root.right is not None:
-        # set weight of edge as absolute difference of data of root and right child
-        matrix[d[root.data]][d[root.right.data]] = abs(root.data - root.right.data)
-        # recursively call function for right child
-        create_adjacency_matrix(root.right, matrix)
+    if bt.right is not None:
+        graph[dictionary[bt.data]][dictionary[bt.right.data]] = abs(
+            bt.data - bt.right.data)
+        adjacency_matrix(bt.right, graph)
 
-    # return adjacency matrix
-    return matrix
+    return graph
 
 
-def inorder_traversal(root):
-    # if root is None, return
-    if root is None:
+def pre_order_traversal(binary_tree):
+    if binary_tree is None:
         return
 
-    d[root.data] = len(d)
-    inorder_traversal(root.left)
-    inorder_traversal(root.right)
+    dictionary[binary_tree.data] = len(dictionary)
+    if binary_tree.left:
+        pre_order_traversal(binary_tree.left)
+    if binary_tree.right:
+        pre_order_traversal(binary_tree.right)
 
-# print(read_vector_from_file())
+
 # utils.generate_non_repeating_vector_and_save(16)
 
 if __name__ == '__main__':
-    numbers = [34, 12, 8, 13, 55]
+    numbers = read_vector_from_file()
     binary_tree = binaryTree.BinaryTree.build_tree(numbers)
 
-    inorder_traversal(binary_tree)
+    pre_order_traversal(binary_tree)
 
     graph = []
     for i in range(len(numbers)):
@@ -59,7 +53,7 @@ if __name__ == '__main__':
         for j in range(len(numbers)):
             graph[i].append(0)
 
-    graph = create_adjacency_matrix(binary_tree, graph)
+    graph = adjacency_matrix(binary_tree, graph)
 
     for i in range(len(graph)):
         print(graph[i])

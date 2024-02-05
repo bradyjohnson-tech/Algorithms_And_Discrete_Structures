@@ -24,22 +24,18 @@ class BinaryTree:
             root.add_child(elements[i])
         return root
 
+    def pre_order_traversal(self):
+        print(self.data)
+        if self.left:
+            self.left.pre_order_traversal()
+        if self.right:
+            self.right.pre_order_traversal()
 
+    def number_of_nodes(self, bt):
+        if bt is None:
+            return 0
+        else:
+            return 1 + self.number_of_nodes(bt.left) + self.number_of_nodes(bt.right)
 
-    # def pre_order_traversal(self):
-    #     print(self.data)
-    #     if self.left:
-    #         self.left.pre_order_traversal()
-    #     if self.right:
-    #         self.right.pre_order_traversal()
-
-
-
-    # def number_of_nodes(self, node):
-    #     if node is None:
-    #         return 0
-    #     else:
-    #         return 1 + self.number_of_nodes(node.left) + self.number_of_nodes(node.right)
-    #
-    # def count_nodes(self):
-    #     return self.number_of_nodes(self)
+    def count_nodes(self):
+        return self.number_of_nodes(self)
