@@ -37,20 +37,30 @@ def matrix_multiplication(nxn: int, matrix_a, matrix_b):
 
 
 if __name__ == '__main__':
-    print("---- Question 1 ----")
-    print("a): " + str(divisible_by([20, 21, 25, 28, 33, 34, 35, 36, 41, 42], 7)))
-    print("b): " + str(divisible_by([18, 54, 76, 81, 36, 48, 99], 9)))
+    try:
+        print("---- Question 1 ----")
+        print("a): " + str(divisible_by([20, 21, 25, 28, 33, 34, 35, 36, 41, 42], 7)))
+        print("b): " + str(divisible_by([18, 54, 76, 81, 36, 48, 99], 9)))
 
-    print("---- Question 2 ----")
-    print("a): " + str(smallest_gap([50, 120, 250, 100, 20, 300, 200])))
-    print("b): " + str(smallest_gap([12.4, 45.9, 8.1, 79.8, -13.64, 5.09])))
+        print("---- Question 2 ----")
+        print("a): " + str(smallest_gap([50, 120, 250, 100, 20, 300, 200])))
+        print("b): " + str(smallest_gap([12.4, 45.9, 8.1, 79.8, -13.64, 5.09])))
 
-    print("---- Question 3 ----")
-    n = 2
-    A = [[2, 7], [3, 5]]
-    B = [[8, -4], [6, 6]]
-    print("a): " + str(matrix_multiplication(n, A, B)))
-    n = 3
-    A = [[1, 0, 2], [3, -2, 5], [6, 2, -3]]
-    B = [[.3, .25, .1], [.44, .8, .1], [-.5, .75, .6]]
-    print("b): " + str(matrix_multiplication(n, A, B)))
+        print("---- Question 3 ----")
+        n = 2
+        A = [[2, 7], [3, 5]]
+        B = [[8, -4], [6, 6]]
+        print("a): " + str(matrix_multiplication(n, A, B)))
+        n = 3
+        A = [[1, 0, 2], [3, -2, 5], [6, 2, -3]]
+        B = [[.3, .25, .1], [.4, .8, 0], [-.5, .75, .6]]
+        print("b): " + str(matrix_multiplication(n, A, B)))
+
+    except ValueError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+
+
+
+
