@@ -16,16 +16,13 @@ def bubble_sort(a):
         total_comparisons += compared
 
         if swapped == 0:
-            print("---------------------------")
             print("===========================")
-            print("---------------------------")
             print("Returned early on Iteration Kth = {iteration}".format(iteration=iteration))
             print("Array: {}".format(a))
             print("Total comparisons: {}".format(total_comparisons))
             print("Total swaps: {}".format(total_swaps))
-            exit()
+            return
 
-        print("===========================")
         print("Iteration Kth = {iteration}".format(iteration=iteration))
         print(a)
         print("Comparisons: {}".format(compared))
@@ -37,4 +34,11 @@ if __name__ == '__main__':
     A5 = [52, 84, 6, 39, 20, 77, 17, 99, 44, 63]
     A6 = [6, 17, 20, 39, 44, 52, 63, 77, 84, 99]
 
+    print("+++++++++++ Array-1 +++++++++++")
     bubble_sort(A4)
+    print()
+    print("+++++++++++ Array-2 +++++++++++")
+    bubble_sort(A5)
+    print()
+    print("+++++++++++ Array-3 +++++++++++")
+    bubble_sort(A6)
